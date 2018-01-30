@@ -21,7 +21,7 @@
     "cy:version": "cypress version",
     "cy:run": "cypress run",
     "cy:open": "cypress open"
-    "list-videos": "ls -l cypress/videos",
+   
     "check-videos": "ok-file 'cypress/videos/*.mp4'"
   },
   "keywords": [],

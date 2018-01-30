@@ -22,7 +22,7 @@
     "cy:run": "cypress run",
     "cy:open": "cypress open"
    
-    "check-videos": "ok-file 'cypress/videos/*.mp4'"
+  
   },
   "keywords": [],
   "author": "Gleb Bahmutov <gleb@cypress.io>",

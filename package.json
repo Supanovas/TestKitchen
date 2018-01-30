@@ -1,28 +1,15 @@
+
 {
   "name": "cypress-test-tiny",
   "version": "1.0.0",
   "description": "Small project for quickly testing Cypress.io test runner",
   "scripts": {
-  "start": "http-server app -c-1",
-    "start:ci": "http-server app -c-1 --silent",
-    "dev": "npm start -- -o",
-    "release": "releaser",
-    "test": "npm start & cypress run",
-    "pretest": "npm run lint",
-    "lint": "eslint --fix cypress/**/*.js app/assets/js/scripts.js",
-    "colon:names": "colon-names",
-    "e2e": "cypress run",
-    "e2e:chrome": "cypress run --browser chrome",
-    "e2e:record": "cypress run --record",
-    "test:ci": "run-p --race start:ci e2e",
-    "test:ci:chrome": "run-p --race start:ci e2e:chrome",
-    "test:ci:record": "run-p --race start:ci e2e:record",
-    "cy:verify": "cypress verify",
-    "cy:version": "cypress version",
-    "cy:run": "cypress run",
-    "cy:open": "cypress open"
-   
-  
+    "cypress:run": "cypress run",
+    "cypress:open": "cypress open",
+    "cypress:verify": "cypress verify",
+    "cypress:version": "cypress version",
+    "list-videos": "ls -l cypress/videos",
+    "check-videos": "ok-file 'cypress/videos/*.mp4'"
   },
   "keywords": [],
   "author": "Gleb Bahmutov <gleb@cypress.io>",

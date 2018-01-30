@@ -1,26 +1,32 @@
+platform:
+  - x86
+  - x64
+
 # https://www.appveyor.com/docs/lang/nodejs-iojs/
 # Test against the latest version of this Node.js version
 environment:
-  nodejs_version: "6"
+  nodejs_version: "8"
 
 # Install scripts. (runs after repo cloning)
 install:
-  - ps: Install-Product node $env:nodejs_version
+  - ps: Install-Product node $env:nodejs_version $env:platform
   # NPM v3 has flaky permission issues on Windows
   - npm install -g npm@5
   # Output useful info for debugging.
   - node --version
   - npm --version
-  - npm i -g commit-message-install
-  - commit-message-install --else "npm install"
+  - node -e "console.log(process.platform)"
+  - node -e "console.log(process.arch)"
+  - npm install
+  # maybe install Cypress based on commit message
+  - node_modules\.bin\commit-message-install --else "npm install cypress"
 
 # Post-install test scripts.
 test_script:
-  # only run if there is commit message
-  # with new version
-  - run-if npm run cy:version
-  - run-if npm run cy:verify
-  - run-if npm run test:ci:record
+  - node_modules\.bin\run-if npm run cypress:verify
+  - node_modules\.bin\run-if npm run cypress:run -- --record
+  # ugghh, what is wrong with Windows not finding files by wildcard
+  # - node_modules\.bin\run-if npm run check-videos
 
 # Don't actually build.
 build: off
